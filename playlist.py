@@ -43,34 +43,23 @@ class PlayList:
 			self.current = self.playlist[0]
 			Media.addFile(self.current)
 
-	def getNext(self):
+	def getNext(self, _increment = 1):
 		index = -1
 
 		if self.current in self.playlist:
 			index = self.playlist.index(self.current)
 
-		_next = index + 1
+		_next = index + _increment
 
-		if _next >= len(self.playlist):
+		if _next >= len(self.playlist) or _next < 0:
 			_next = 0
 
 		self.current = self.playlist[_next]
 
 		return self.current
+
 	def getPrev(self):
-		index = -1
-
-		if self.current in self.playlist:
-			index = self.playlist.index(self.current)
-
-		_next = index - 1
-
-		if _next < 0:
-			_next = 0
-
-		self.current = self.playlist[_next]
-
-		return self.current
+		return self.getNext(-1)
 
 	def isEmpty(self):
 		return not len(self.playlist)

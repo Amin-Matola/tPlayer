@@ -7,7 +7,7 @@ from menus import Menu
 from media import Media
 from application import Application
 
-print(Application.getInstance())
+
 app 	= Application(sys.argv)
 
 app.setStyle("Fusion")
@@ -48,9 +48,6 @@ class Player (QMainWindow):
 		return Player.instance
 
 	def start():
-
-		print(Application.getInstance())
-
 		player = Player.getInstance()
 		player.show()
 		player.checkFiles()
