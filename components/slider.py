@@ -7,14 +7,20 @@ class Slider (QSlider):
 	def __init__(self, orient, parent = None):
 		super(Slider, self).__init__(orient, parent)
 
-	def mousePressEvent(self, e):
+		#	print(dir(self))
+
+	def mouseReleaseEvent(self, e):
+		#print(type(e))
+
 		if e.button() == Qt.LeftButton:
 			e.accept()
 			x = e.pos().x()
 			value = (self.maximum() - self.minimum()) * x / self.width() + self.minimum()
-			self.setValue(value)
+			
+			if self.sliderPosition != value:
+				#self.setValue(value)
 
-			Media.player.released()
+				Media.player.player.setPosition(int(value))
 		else:
 			return super().mousePressEvent(self, e)
 

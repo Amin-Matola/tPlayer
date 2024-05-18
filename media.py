@@ -69,11 +69,14 @@ class Media:
 				Media.addFile(self.playlist.getNext())
 
 	def released(self):
+		
 		pos = self.progress.sliderPosition()
 
 		#print(pos, self.progress.value())
 		
-		self.player.setPosition(pos)
+		if pos != self.player.position():
+			self.player.setPosition(pos)
+			time.sleep(.01)
 		#self.progress.setValue(pos)
 
 
@@ -88,8 +91,9 @@ class Media:
 		self.playButton = item
 		self.progress = progress
 		self.progress.sliderMoved.connect(self.released)
-		self.progress.sliderPressed.connect(self.released)
-		#self.progress.valueChanged.connect(self.released)
+		#self.progress.sliderPressed.connect(self.released)
+		#self.progress.sliderReleased.connect(self.released)
+
 
 	def getPlayer():
 		return Media.player.player

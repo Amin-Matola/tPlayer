@@ -26,8 +26,11 @@ class Menu:
 		self.init()
 
 	def init(self):
-		self.speeds.addItems(["1", "1.25", "1.30", "1.35", "1.40", "1.45", "1.50", "1.75", "2"])
-		#self.rate.setTextVisible(False)
+		self.speeds.addItems([
+			"1", "1.15", "1.25", 
+			"1.30", "1.35", "1.40", "1.45", 
+			"1.50", "1.75", "2"
+			])
 
 	def setMenus(self):
 		self.file_menu 	= self.menu.addMenu("&File")
